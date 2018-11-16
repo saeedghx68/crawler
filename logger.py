@@ -11,8 +11,6 @@ class Logger(object):
             Logger.__instance = object.__new__(cls)
             # create logger
             names = [
-                'nsq_log',
-                'select_offers',
                 'error',
             ]
             Logger.__instance.loggers = {}
@@ -23,7 +21,6 @@ class Logger(object):
 
     def _create_logger(self, name):
         logger = logging.getLogger(name)
-        #logger.propagate = False
         formatter = logging.Formatter("%(asctime)s, %(levelname)s :%(message)s", "%Y-%m-%d %H:%M:%S")
         file_handler = logging.handlers.TimedRotatingFileHandler(
             'logs/%s.log'%name,
@@ -31,9 +28,7 @@ class Logger(object):
             backupCount=3
         )
         file_handler.setFormatter(formatter)
-        #stream_handler = logging.StreamHandler()
         logger.addHandler(file_handler)
-        #logger.addHandler(stream_handler)
         logger.setLevel(logging.INFO)
         self.loggers[name] = logger
 
