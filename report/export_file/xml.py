@@ -1,5 +1,6 @@
 from xml.dom import minidom
 
+
 class XML:
     @classmethod
     def export_file(cls, data, file_address):
@@ -54,5 +55,4 @@ class XML:
 
         xml_str = root.toprettyxml('\t')
         with open(file_address, "w") as f:
-                f.write(xml_str)
-
+            f.write(xml_str)

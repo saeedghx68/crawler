@@ -1,9 +1,8 @@
 import logging
 import logging.handlers
-import os
 
-# Singleton
-class Logger(object):
+
+class Logger(object):  # singleton object
     __instance = None
 
     def __new__(cls):
@@ -21,9 +20,11 @@ class Logger(object):
 
     def _create_logger(self, name):
         logger = logging.getLogger(name)
-        formatter = logging.Formatter("%(asctime)s, %(levelname)s :%(message)s", "%Y-%m-%d %H:%M:%S")
+        formatter = logging.Formatter(
+            f"{asctime}, {levelname} :{message}",
+            "%Y-%m-%d %H:%M:%S")
         file_handler = logging.handlers.TimedRotatingFileHandler(
-            'logs/%s.log'%name,
+            'logs/%s.log' % name,
             when='midnight',
             backupCount=3
         )
@@ -40,5 +41,5 @@ class Logger(object):
         if logger:
             logger.info(message)
 
-global_logger = Logger()
 
+global_logger = Logger()
