@@ -3,6 +3,7 @@ import async_timeout
 import aiohttp
 from urllib.parse import urljoin, urlparse
 from lxml import html as lh
+from logger import global_logger
 
 class Crawler:
     def __init__(self, start_url, max_async_call=200):
@@ -21,7 +22,7 @@ class Crawler:
                         html = await response.read()
                         return html
             except Exception as err:
-                print(err)
+                global_logger.write_log('error', f"error: {err}")
                 return ''
 
     def fetch_urls(self, html):
