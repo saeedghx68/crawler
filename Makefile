@@ -18,4 +18,11 @@ test:
 	python -m unittest discover unittesting
 
 all:
+	mkdir logs
+	touch logs/error.log
+	sudo apt install python3-pip virtualenv
+	virtualenv -p python3.7 .env
+	source .env/bin/activate
+	pip install -r $(REQ_FILE)
 	python crawler.py -u $(url) -t $(format) -o $(output)
+
