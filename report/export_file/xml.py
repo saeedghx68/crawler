@@ -24,7 +24,7 @@ class XML:
             # add url
             child_of_url = root.createElement('urls')
             url_child.appendChild(child_of_url)
-            for link in items('urls', []):
+            for link in items.get('urls', []):
                 child_of_child_of_url = root.createElement('url')
                 child_of_child_of_url.appendChild(root.createTextNode(link))
                 child_of_url.appendChild(child_of_child_of_url)
