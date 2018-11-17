@@ -1,3 +1,4 @@
+import os
 import asyncio
 import async_timeout
 import aiohttp
@@ -35,14 +36,18 @@ class Crawler:
 
     def fetch_urls(self, html):
         urls = []
-        all_urls = []
+        all_urls = set()
         dom = lh.fromstring(html)
         for href in dom.xpath('//a/@href'):
             url = urljoin(self.base_url, href)
+            path = urlparse(url).path
+            ext = os.path.splitext(path)[1]
+            if bool(ext) and ext not in ['.html', '.htm']:
+                continue
             if url not in self.visited_urls and url.startswith(self.base_url):
                 urls.append(url)
-            if url.startswith(self.base_url):
-                all_urls.append(url)
+            if url not in all_urls and url.startswith(self.base_url):
+                all_urls.add(url)
         return urls, all_urls
 
     async def extract(self, url):
@@ -71,7 +76,6 @@ class Crawler:
         while len(fetch_urls):
             urls = await self.extract_data_urls(fetch_urls[0:self.max_async_call])
             del fetch_urls[0:self.max_async_call]
-            fetch_urls = []
             for url, data, found_urls, all_urls in urls:
                 fetch_urls.extend(found_urls)
                 result = self.parse_html_content(data)

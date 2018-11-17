@@ -21,7 +21,7 @@ class Logger(object):  # singleton object
     def _create_logger(self, name):
         logger = logging.getLogger(name)
         formatter = logging.Formatter(
-            f"{asctime}, {levelname} :{message}",
+            "%(asctime)s, %(levelname)s :%(message)s",
             "%Y-%m-%d %H:%M:%S")
         file_handler = logging.handlers.TimedRotatingFileHandler(
             'logs/%s.log' % name,
