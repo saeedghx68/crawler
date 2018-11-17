@@ -18,6 +18,11 @@ class Crawler:
         self.visited_urls = set()
 
     async def get_body(self, url):
+        """
+        open url with aiohttp package
+        :param url: url address
+        :return: return html content of url if url is not valid then return ''
+        """
         print(f'{30*"-"} > Get Body: {url}')
         try:
             async with aiohttp.ClientSession() as session:
@@ -35,6 +40,11 @@ class Crawler:
         return ''
 
     def fetch_urls(self, html):
+        """
+        fetch all of urls which are'nt in visited_urls
+        :param html: html content
+        :return: return new urls and all_urls in the html content
+        """
         urls = []
         all_urls = set()
         dom = lh.fromstring(html)
@@ -59,6 +69,11 @@ class Crawler:
         return url, data, sorted(urls), all_urls
 
     async def extract_data_urls(self, urls):
+        """
+        This method can extract all data from list of url and every url add to visited_urls set
+        :param urls: list of ulr
+        :return: result of urls data which contains url, data, sorted(urls), all_urls
+        """
         futures, results = [], []
         for url in urls:
             if url in self.visited_urls:
@@ -71,9 +86,22 @@ class Crawler:
         return results
 
     async def crawl(self):
+        """
+        The main method that you want crawl a domain
+        :return: A list of result that contain a url and dictionary
+        which is in set objects (css_links, js_links, img_links, and icon_links)
+        """
         fetch_urls = [self.start_url]
         results = []
         while len(fetch_urls):
+            """
+            slicing array urls with max_async_call arg and then run extract_data_urls
+            extract_data_urls return a object that contains url, data, found_urls, and all_urls
+            url is a url that we crawled
+            data is Html content of the url
+            found_urls are new urls that we have to crawl that
+            all_urls are all links in the html page
+            """
             urls = await self.extract_data_urls(fetch_urls[0:self.max_async_call])
             del fetch_urls[0:self.max_async_call]
             for url, data, found_urls, all_urls in urls:
@@ -84,6 +112,11 @@ class Crawler:
         return results
 
     def parse_html_content(self, data):
+        """
+        parse html data to fetch css_links, js_links, img_links, and icon_links using lxml
+        :param data:
+        :return: a dictionary of set objects that contains css_links, js_links, img_links, and icon_links
+        """
         result = {}
         if data == '':
             return result
