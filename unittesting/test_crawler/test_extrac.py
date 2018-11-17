@@ -24,23 +24,21 @@ class TestExtractDataUrls(unittest.TestCase):
                 'http://yoyowallet.com/cookies.html',
                 'http://yoyowallet.com/epos.html',
                 'http://yoyowallet.com/get-in-touch.html',
-                'http://yoyowallet.com/index.html ',
                 'http://yoyowallet.com/retailers/index.html']
             all_urls = {
-                'http://yoyowallet.com/cookies.html',
-                'http://yoyowallet.com/index.html ',
                 'http://yoyowallet.com/about.html',
-                'http://yoyowallet.com/basket-data.html',
-                'http://yoyowallet.com/caterers/index.html',
-                'http://yoyowallet.com',
-                'http://yoyowallet.com/banks/index.html',
-                'http://yoyowallet.com/epos.html',
-                'http://yoyowallet.com/careers.html',
-                'http://yoyowallet.com/get-in-touch.html',
-                'http://yoyowallet.com/assets.html',
                 'http://yoyowallet.com/case-studies/caffe-nero-case-study.html',
+                'http://yoyowallet.com/careers.html',
+                'http://yoyowallet.com/banks/index.html',
+                'http://yoyowallet.com',
+                'http://yoyowallet.com/assets.html',
+                'http://yoyowallet.com/caterers/index.html',
+                'http://yoyowallet.com/cookies.html',
                 'http://yoyowallet.com/',
-                'http://yoyowallet.com/retailers/index.html'}
+                'http://yoyowallet.com/basket-data.html',
+                'http://yoyowallet.com/epos.html',
+                'http://yoyowallet.com/retailers/index.html',
+                'http://yoyowallet.com/get-in-touch.html'}
             crawler = Crawler(url)
             _url, data, _urls, _all_urls = await crawler.extract(url)
             self.assertEqual(_url, url)
