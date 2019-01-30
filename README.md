@@ -1,48 +1,53 @@
 Crawler
 =============
-A web crawler that geiven a URL, visit HTML pages within the same domain.
+A web crawler that, visits HTML pages within the same domain for a given url.
 
-Web crawler will output a file (csv|xml) , and for each page a list of assets (e.g. CSS, Images, Javascripts) and links between pages..
+Web crawler will output a file (csv|xml) , and for each page a list of assets (e.g. CSS, Images, Javascripts) and links between pages.
 
 Run
 -----------
 clone the project and run with docker
+
+
+generate xml file:
 ```
-docker build -t crawler . && touch ~/out.xml && docker run --name python_crawler -v ~/out.xml.out:/tmp/out.xml crawler python crawler.py -u http://yoyowallet.com -t xml -o /tmp/out.xml  
+docker build -t crawler .  && touch /tmp/out.xml && docker run --name python_crawler -v /tmp/out.xml:/tmp/out.xml crawler python crawler.py -u http://test.com -t xml -o /tmp/out.xml
+```
+generate csv file:
+```
+docker build -t crawler .  && touch /tmp/out.csv && docker run --name python_crawler -v /tmp/out.csv:/tmp/out.csv crawler python crawler.py -u http://test.com -t csv -o /tmp/out.csv
 ```
 
-after this, the application will create a file in your home directory which name is out.xml.
+after this, the application will output the result in desired path with entered output type(xml/csv).
 
 **notes:**
-1) Output can set csv or xml
+1) Output can be set csv or xml
 2) You can set any urls
 3) You can change the output file
 
-```
-
-Test and Build
 -----------
+**Test and Build**
+
 to run test or build application, we have make commands so :
 to run tests:
+
+**To test application**
 ```
 make test
 ```
-
-to test application
-```
 **note** please install python3.7 before run **make** command
 
+
+**Run app**
+```
 make all
 ```
-
 This command will install `python3-pip` and `virtualenv`
-After that run create virtualenv and active and then install requirements package
-finaly run this command.
-python crawler.py -u $(url) -t $(format) -o $(output)
+After that run create `virtualenv` and active and then install requirements package, finaly run this command.
+`python crawler.py -u $(url) -t $(format) -o $(output)`
 for example you have to run:
-make all output=/tmp/a.xml url=http://yoyowallet.com/ format=xml 
+`make all output=/tmp/a.xml url=http://test.com/ format=xml` 
 
-```
 
 How it work
 -----------

@@ -1,8 +1,3 @@
-PROJECT_NAME=crawler
-ENV=dev
-
-LINUX_PACKAGE_MANAGER=apt-get
-
 REQ_FILE=requirements.txt
 
 freeze_requirements:
