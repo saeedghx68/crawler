@@ -8,7 +8,6 @@ Run
 -----------
 clone the project and run with docker
 
-
 generate xml file:
 ```
 docker build -t crawler .  && touch /tmp/out.xml && docker run --name python_crawler -v /tmp/out.xml:/tmp/out.xml crawler python crawler.py -u http://test.com -t xml -o /tmp/out.xml
@@ -26,7 +25,7 @@ after this, the application will output the result in desired path with entered 
 3) You can change the output file
 
 -----------
-**Test and Build**
+## Test and Build
 
 to run test or build application, we have make commands so :
 to run tests:
@@ -36,7 +35,6 @@ to run tests:
 make test
 ```
 **note** please install python3.7 before run **make** command
-
 
 **Run app**
 ```
