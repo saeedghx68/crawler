@@ -6,7 +6,7 @@ autopep8==1.4.3
 chardet==3.0.4
 cssselect==1.0.3
 idna==2.7
-lxml==4.2.5
+lxml==4.6.3
 more-itertools==4.3.0
 multidict==4.4.2
 pluggy==0.8.0
