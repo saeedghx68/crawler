@@ -10,7 +10,7 @@ lxml==4.2.5
 more-itertools==4.3.0
 multidict==4.4.2
 pluggy==0.8.0
-py==1.7.0
+py==1.10.0
 pycodestyle==2.4.0
 six==1.11.0
 yarl==1.2.6
