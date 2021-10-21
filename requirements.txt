@@ -1,4 +1,4 @@
-aiohttp==3.4.4
+aiohttp>=3.10.4
 async-timeout==3.0.1
 atomicwrites==1.2.1
 attrs==18.2.0
@@ -6,11 +6,11 @@ autopep8==1.4.3
 chardet==3.0.4
 cssselect==1.0.3
 idna==2.7
-lxml==4.2.5
+lxml>=4.6.3
 more-itertools==4.3.0
 multidict==4.4.2
 pluggy==0.8.0
-py==1.7.0
+py>=1.10.0
 pycodestyle==2.4.0
 six==1.11.0
 yarl==1.2.6
