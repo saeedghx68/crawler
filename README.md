@@ -34,7 +34,7 @@ to run tests:
 ```
 make test
 ```
-**note** please install python3.7 before run **make** command
+**note** please install python3.10 before run **make** command
 
 **Run app**
 ```

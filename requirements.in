@@ -1,0 +1,16 @@
+aiohttp
+async-timeout
+atomicwrites
+attrs
+autopep8
+chardet
+cssselect
+idna
+lxml
+more-itertools
+multidict
+pluggy
+py
+pycodestyle
+six
+yarl
