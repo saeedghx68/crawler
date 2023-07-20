@@ -4,9 +4,11 @@
 #
 #    pip-compile --output-file=requirements.txt requirements.in
 #
-aiohttp==3.7.4.post0
+aiohttp==3.8.5
     # via -r requirements.in
-async-timeout==3.0.1
+aiosignal==1.3.1
+    # via aiohttp
+async-timeout==4.0.2
     # via
     #   -r requirements.in
     #   aiohttp
@@ -19,11 +21,15 @@ attrs==18.2.0
 autopep8==1.4.3
     # via -r requirements.in
 chardet==3.0.4
-    # via
-    #   -r requirements.in
-    #   aiohttp
+    # via -r requirements.in
+charset-normalizer==3.2.0
+    # via aiohttp
 cssselect==1.0.3
     # via -r requirements.in
+frozenlist==1.4.0
+    # via
+    #   aiohttp
+    #   aiosignal
 idna==2.7
     # via
     #   -r requirements.in
@@ -49,8 +55,6 @@ six==1.11.0
     # via
     #   -r requirements.in
     #   more-itertools
-typing-extensions==3.10.0.2
-    # via aiohttp
 yarl==1.2.6
     # via
     #   -r requirements.in
